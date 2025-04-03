@@ -1,0 +1,3 @@
+00:00:00.00| INFO: START DOCKING Init0.pdb with Init1.pdb
+00:00:00.00| INFO: Start reading PDB for receptor molecule
+00:00:00.00| ERROR: Can't open file: Init0.pdb

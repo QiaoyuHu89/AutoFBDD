@@ -1,0 +1,120 @@
+Readme file for PatchDock Program.
+
+##########################################################################
+# Installation
+##########################################################################
+
+No installation is required, you can add the PatchDock
+directory to your path for convinient usage
+
+##########################################################################
+# Program Input Preparation
+##########################################################################
+
+1) Prepare 2 pdb files with the molecules you want to dock: file1.pdb and file2.pdb
+2) Create parameter file by running the script: buildParams.pl.
+   The script recieves as an input 4 parameters:
+   1,2: the names of the PDB files (receptor and ligand),
+   3: clustering RMSD parameter (optional)
+   4: the type of molecules (optional). Currently there are special sets of parameters
+      for some types of docking:
+      EI: the receptor is an enzyme and the ligand is an inhibitor.
+          In this case the program docks the inhibitor into cavities of the enzyme.
+      AA: the receptor is an antibody and the ligand is an antigen.
+	  In this case, the file with CDRs of the antibody "cdrs3" is prepared.
+	  The program will use CDRs of the antibody for docking.
+      drug: The receptor is a protein molecule and the ligand is a small 
+            molecule: drug like or peptide.
+   The script will create parameter file named params.txt. All the parameters
+   are explained within the parameter file.
+
+   The following are recommended parameters for protein-protein docking:
+   1. Fast sampling: buildParams.pl receptor_pdb ligand_pdb 4.0 type
+   2. Medium accuracy sampling: buildParams.pl receptor_pdb ligand_pdb 2.0 type
+   3. High Accuracy sampling: buildParamsFine.pl receptor_pdb ligand_pdb 2.0 type
+   Note: the higher the accuracy, the higher is the number of output models.
+
+3) Additional input:
+   (a) potential binding site residues for one or two molecules.
+   For example, in case of antibody, the CDRs are automatically specified.
+   This reduces running time and the quality of the results obtained by the program.
+   The format of the active site file is as follows: each line includes
+   residue number and chain id for one residue. No empty lines are allowed.
+   For example:
+	  347 A
+	  348 A
+   The name of this file is specified in parameter file, simply add or uncomment line
+   "receptorActiveSite file_name" or "ligandActiveSite file_name".
+
+   (b) distance constraints
+   If one or more distance constraints are available you can give them to the program.
+   If you have only one distance constraint, uncomment this line:
+	#distanceConstraints rec_atom_index lig_atom_index dist_thr
+   Specify the two atoms by their indices in PDB file and give a limit on their distance.
+   If more than one constraint is available, prepare a file with your constraints in the format:
+       rec_atom_index1 lig_atom_index1 dist_thr1
+       rec_atom_index2 lig_atom_index2 dist_thr2	
+   uncomment this line and specify the name of constraints file in file_name
+	#distanceConstraintsFile file_name
+
+##########################################################################
+# Running the program
+##########################################################################
+
+simply type:
+
+    patch_dock.Linux <params_file> <output_file>
+
+params_file is the parameter file "params.txt" that was previously created
+by "buildParams.pl".
+output_file is the name of the file that will include the results.
+
+##########################################################################
+# Program Output
+##########################################################################
+
+If you run: ./patch_dock.Linux params.txt output.txt
+than the output of the program is stored in output.txt file
+ 
+   (*) The program log is saved in log file named patch_dock.log.
+
+The output file includes all program parameters and the solutions obtained.
+Each model is represented by a line.
+The format is as follows:
+
+# | score | pen.  | Area    | as1   | as2   | as12  | ACE     | hydroph | Energy  |cluster| dist. || Ligand Transformation
+1 | 10762 | -3.01 | 1570.00 |     0 |     0 |     0 |   22.61 |  965.39 |    0.00 |     0 | 0.00 || 0.32548 -0.32678 1.52473 33.24891 -37.85791 7.69024
+
+#       - solution number
+score   - geometric shape complementarity score
+pen.    - maximal surface penetration of surface points
+Area    - approximate interface area of the complex
+as1     - geometric score based only on receptor residues that were given as potential binding site
+as2     - geometric score based only on ligand residues that were given as potential binding site
+as12    - geometric score based on both receptor and ligand residues that were given as potential binding site
+ACE     - atomic contact energy according to Zhang et al.
+hydroph - approximate hydrophobi contacting interface area of the complex
+Energy  - currently unused
+cluster - currently unused
+dist.   - if distance constraints are given, will display the distance for the closest distance constraint
+Ligand Transformation - the transformation of the ligand on the receptor (3 rotational and 3 translational parameters)
+
+The results are sorted according to the geometric score.
+
+##########################################################################
+# Generating PDB files with results
+##########################################################################
+
+To produce PDB files for docking solutions, run
+
+   transOutput.pl <output file name> <first result> <last result>
+
+The output file is the file created by the program earlier.
+The <first result> <last result> are the numbers of transformations to generate.
+For example running: 
+    transOutput.pl output.txt 1 10
+will create PDB files with first 10 transformations.
+
+
+
+
