@@ -1,0 +1,23 @@
+======================================
+ CDR utility: cdr.Linux or cdr3.Linux 
+======================================
+
+The utilities find the residues which are most likely to be the CDRs of the
+antibody. The cdr.Linux find all six loops, while cdr3.Linux ouputs only H3 and
+L3 loops.  
+The CDR detection is performed by aligning the sequence generated from the pdb
+file with the consensus sequences (read from the directory given as a second
+parameter).
+
+INPUT:
+-----
+The input to the program is PDB file, including antibody light and heavy 
+chains and the directory of the files containing sequences.
+The files are inside the directory including the utility.
+
+OUTPUT:
+------
+The output is residue number and chain in each line. The first consecutive
+residues are of CDR-1 of the light chain, the last consecutive residues are
+those of CDR-3 of the heavy chain. This output format can be used for PatchDock
+active site parameter (see PatchDock README).
