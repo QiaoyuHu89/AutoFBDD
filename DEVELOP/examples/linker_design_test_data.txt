@@ -1,0 +1,1 @@
+COc1cc2c(cc(C#N)n2Cc2cn[nH]c2)c(C)c1C[NH+]1CCC(Nc2ncnc3sc(CC(F)(F)F)cc23)CC1 [*]c1cc2c(NC3CC[NH+](Cc4c(OC)cc5c(cc(C#N)n5[*])c4C)CC3)ncnc2s1 [*]CC(F)(F)F.[*]Cc1cn[nH]c1 15.018512975657746 0.7987305963635145
