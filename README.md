@@ -6,37 +6,10 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   <strong>图1.</strong> AutoFBDD模型框架示意图
 </p>
 
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%;">
-  <!-- 图片1（左） -->
-  <div style="text-align: center;">
-    <img src="figures/Fragment_docking.gif" 
-         alt="Fragment Docking Animation" 
-         width="300"
-         style="display: block; margin: 0 auto;"
-         autoplay loop muted>
-    <p><strong>图1.</strong> 左图说明</p>
-  </div>
-
-  <!-- 图片2（中） -->
-  <div style="text-align: center;">
-    <img src="figures/Fragment_linking_1.gif" 
-         alt="Fragment Docking Animation" 
-         width="300"
-         style="display: block; margin: 0 auto;"
-         autoplay loop muted>
-    <p><strong>图2.</strong> 中图说明</p>
-  </div>
-
-  <!-- 图片3（右） -->
-  <div style="text-align: center;">
-    <img src="figures/Fragment_linking_2.gif" 
-         alt="Fragment Docking Animation" 
-         width="300"
-         style="display: block; margin: 0 auto;"
-         autoplay loop muted>
-    <p><strong>图3.</strong> 右图说明</p>
-  </div>
-</div>
+| 左图 | 中图 | 右图 |
+|------|------|------|
+| <img src="figures/Fragment_docking.gif" width="300" /> | <img src="figures/Fragment_linking_1.gif" width="300" /> | <img src="figures/Fragment_linking_2.gif" width="300" /> |
+| **左图标题** | **中图标题** | **右图标题** |
 
 ## Installation
 
