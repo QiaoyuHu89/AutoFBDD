@@ -1,0 +1,14 @@
+#PBS -N ifitdock
+#PBS -l nodes=1:ppn=20
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -q amdnode
+#PBS -l walltime=720:00:00
+
+module load compiler/gnu/8.3.0
+
+cd $PBS_O_WORKDIR
+
+export PATH=/public/home/hqy/anaconda3/envs/python36/bin:$PATH
+
+python ifitdock.py -i WDR5.pdb -c center.txt -f brickfolder -l bricks_file.txt -p1 20 -p2 20 -n 5 --parallel

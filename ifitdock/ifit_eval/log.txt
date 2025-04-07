@@ -1,0 +1,7 @@
+Preparing protein done!
+waiting for all processes
+Total time of preparing all bricks 385.41169023513794 s
+====================================================================================================
+Preparing brick folder done!
+Mapping is finished!
+Running time for evaluation: 4887.734576463699 Seconds
