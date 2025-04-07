@@ -32,10 +32,14 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 
 ### Install conda environment via yaml file
 ```bash
-# Create the environment
-conda env create -f env.yml
-# Activate the environment
-conda activate diffgui
+# Create the AutoFBDD environment
+conda env create -f AutoFBDD.yml
+# Activate the AutoFBDD environment
+conda activate AutoFBDD
+# Create the DeepPROTACs environment
+conda env create -f DeepPROTACs.yml
+# Activate the DeepPROTACs environment
+conda activate DeepPROTACs
 ```
 
 ### Install Vina Docking
