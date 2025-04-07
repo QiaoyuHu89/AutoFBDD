@@ -14,7 +14,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
      autoplay 
      loop 
      muted><br>
-  <strong>图2.</strong> AutoFBDD分子生成动画
+  <strong>图2.</strong> AutoFBDD小分子和PROTAC生成动画
 </p>
 
 ## Installation
