@@ -13,7 +13,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
     <td><img src="figures/Fragment_linking_2.gif" width="250" /></td>
   </tr>
   <tr>
-    <td colspan="3" align="center"><strong>Fig 2.</strong>Animation of fragment docking and linking</td>
+    <td colspan="3" align="center"><strong>Fig 2.</strong> Animation of fragment docking and linking</td>
   </tr>
 </table>
 
@@ -25,7 +25,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
      autoplay 
      loop 
      muted><br>
-  <strong>图3.</strong> AutoFBDD生成PROTACs动态图
+  <strong>Fig 3.</strong> Animation of PROTACs generation
 </p>
 
 ## Installation
