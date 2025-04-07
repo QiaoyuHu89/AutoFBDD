@@ -91,8 +91,13 @@ You can download the brick library `brick_library.tar.gz` from [here](https://dr
 
 ## Generation of small molecules
 ```bash
-python AutoFBDD.py --mode linking --brick_mode brick --folder WDR5_linking_all --input_pdb WDR5.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 10 --poses 3
+python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 10 --poses 3
 ```
+* `mode`: FBDD mode (linking or growing).
+* `brick_mode`: brick mode (brick or mol). If you want to use brick_library or provide your own brickfolder, please specify brick in brick_mode. If you have a list of small molecules and want to cut them into bricks, please specify mol in brick_mode.
+* `folder`: working folder name.
+* `input_pdb`: input pdb file.
+* `center`: pocket center file, 
 
 ## Generation of PROTACs
 
