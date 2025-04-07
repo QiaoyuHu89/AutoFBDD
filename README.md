@@ -3,7 +3,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 
 <p align="center">
   <img src="figures/AutoFBDD_framework.png" alt="AutoFBDD Framework" /><br>
-  <strong>图1.</strong> AutoFBDD模型框架示意图
+  <strong>Fig 1.</strong> AutoFBDD framework
 </p>
 
 <table align="center">
@@ -13,7 +13,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
     <td><img src="figures/Fragment_linking_2.gif" width="250" /></td>
   </tr>
   <tr>
-    <td colspan="3" align="center"><strong>图2.</strong>AutoFBDD片段对接及片段连接动态图</td>
+    <td colspan="3" align="center"><strong>Fig 2.</strong>Animation of fragment docking and linking</td>
   </tr>
 </table>
 
