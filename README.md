@@ -91,6 +91,7 @@ You can download the brick library `brick_library.tar.gz` from [here](https://dr
 
 ## Generation of small molecules
 ```bash
+conda activate AutoFBDD
 python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 10 --poses 3
 ```
 * `mode`: FBDD mode (linking or growing).
@@ -107,6 +108,20 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 * `poses`: the number of poses saved for each pair of linked or grown bricks.
 
 ## Generation of PROTACs
+```bash
+conda activate AutoFBDD
+python AutoPROTACs.py --folder folder --target target.pdb --warhead_anchor_id num --E3_ligase E3_ligase.pdb --E3_ligand E3_ligand.mol2 --ligand_anchor_id num --min_dist 5 --max_dist 15 --num_cpu 20 --top_docking 100
+```
+* `folder`: working folder name.
+* `target`: target protein file.
+* `warhead_anchor_id`: warhead anchor ID, select anchor automatically if warhead_anchor_id is not specified or specified to be -1.
+* `E3_ligase`: E3 ligase file.
+* `E3_ligand`: E3 ligand file.
+* `ligand_anchor_id`: E3 ligand anchor ID, select anchor automatically if ligand_anchor_id is not specified or specified to be -1.
+* `min_dist`: the minimum length of linker.
+* `max_dist`: the maximum length of linker.
+* `num_cpu`: the number of cpu used in parallel run.
+* `top_docking`: the number of top rosetta docking results extracted.
 
 ## Datasets
 The benchmark datasets utilized in this project are PDBbind and CrossDocked.
