@@ -633,12 +633,11 @@ def main(folder, target, warhead_anchor_id, E3_ligase, E3_ligand, ligand_anchor_
             Structs = ['target_warhead.pdb', 'E3_ligase_ligand.pdb']
 
             # Patchdock
-            #log.write('INFO: Running PatchDock with the constrains for ' + subfolder + '.\n')
-            #Num_Results = patchdock(Structs, [a + 1 for a in anchors], min_dist, max_dist, 1000, 2.0)
-            #if Num_Results == None:
-            #    log.write('INFO: PatchDock did not find any global docking solution within the geometrical constraints for ' + subfolder + '.\n')
-            #    continue
-            Num_Results = 1000
+            log.write('INFO: Running PatchDock with the constrains for ' + subfolder + '.\n')
+            Num_Results = patchdock(Structs, [a + 1 for a in anchors], min_dist, max_dist, 1000, 2.0)
+            if Num_Results == None:
+               log.write('INFO: PatchDock did not find any global docking solution within the geometrical constraints for ' + subfolder + '.\n')
+               continue
 
             # Rosetta Local Docking
             log.write('INFO: Run Rosetta local docking on the top n PatchDock results for ' + subfolder + '.\n')
