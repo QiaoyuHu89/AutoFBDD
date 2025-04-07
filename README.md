@@ -97,7 +97,7 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 * `brick_mode`: brick mode (brick or mol). If you want to use brick_library or provide your own brickfolder, please specify brick in brick_mode. If you have a list of small molecules and want to cut them into bricks, please specify mol in brick_mode.
 * `folder`: working folder name.
 * `input_pdb`: input pdb file.
-* `center`: pocket center file, 
+* `center`: pocket center file (xyz coordiantes of protein binding pocket center). An example is provided in /ifitdock/center.txt.
 
 ## Generation of PROTACs
 
