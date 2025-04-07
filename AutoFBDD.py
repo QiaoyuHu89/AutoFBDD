@@ -46,7 +46,7 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
         if not os.path.exists('ifit_dock'):
             os.mkdir('ifit_dock')
         os.system('cp ../ifitdock/ifit_dock/* ifit_dock/')
-        if brickfolder not in ['zinc', 'chembl', 'pdbbind', 'all', 'all_0.4', 'all_adme']:
+        if brickfolder not in ['all', 'all_0.8', 'all_0.6', 'all_0.4']:
             os.system('cp -r ' + pdbfile + ' ' + centerfile + ' ' + brickfolder + ' ifit_dock/')
         else:
             os.system('cp ' + pdbfile + ' ' + centerfile + ' ifit_dock/')
@@ -226,7 +226,7 @@ def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
         if not os.path.exists('ifit_dock'):
             os.mkdir('ifit_dock')
         os.system('cp ../ifitdock/ifit_dock/* ifit_dock/')
-        if brickfolder not in ['zinc', 'chembl', 'pdbbind', 'all', 'all_0.4', 'all_adme']:
+        if brickfolder not in ['all', 'all_0.8', 'all_0.6', 'all_0.4']:
             os.system('cp -r ' + pdbfile + ' ' + centerfile + ' ' + brickfolder + ' ifit_dock/')
         else:
             os.system('cp ' + pdbfile + ' ' + centerfile + ' ifit_dock/')
