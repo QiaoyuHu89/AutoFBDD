@@ -56,14 +56,14 @@ cd rosetta_src_2020.08.61146_bundle/main/source
 ```
 `-j` is indicating how many cores you want to use. This number depends on your computer.
 
-
-### Install other required softwares
+### Install pkcombu
 ```bash
-pip install diffusers==0.21.4 docutils==0.17.1 filelock==3.12.2 fsspec==2023.1.0
-pip install softwares/torch_cluster-1.6.1+pt113cu116-cp37-cp37m-linux_x86_64.whl
-pip install softwares/torch_scatter-2.1.1+pt113cu116-cp37-cp37m-linux_x86_64.whl
+cd eMolFrag
+tar -xvzf kcombu-src-20200414.tar.gz
+cd src
+make -f Makefile.pkcombu
 ```
-The package version should be changed according to your need.
+If the sources is successfully compiled, an execution file "pkcombu" will appear in the "../src" directory.
 
 ## Datasets
 The benchmark datasets utilized in this project are PDBbind and CrossDocked.
