@@ -6,9 +6,9 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   <strong>图1.</strong> AutoFBDD模型框架示意图
 </p>
 
-<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; width: 100%;">
   <!-- 图片1（左） -->
-  <div style="flex: 1; text-align: center;">
+  <div style="text-align: center;">
     <img src="figures/Fragment_docking.gif" 
          alt="Fragment Docking Animation" 
          width="300"
@@ -18,7 +18,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   </div>
 
   <!-- 图片2（中） -->
-  <div style="flex: 1; text-align: center;">
+  <div style="text-align: center;">
     <img src="figures/Fragment_linking_1.gif" 
          alt="Fragment Docking Animation" 
          width="300"
@@ -28,7 +28,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   </div>
 
   <!-- 图片3（右） -->
-  <div style="flex: 1; text-align: center;">
+  <div style="text-align: center;">
     <img src="figures/Fragment_linking_2.gif" 
          alt="Fragment Docking Animation" 
          width="300"
