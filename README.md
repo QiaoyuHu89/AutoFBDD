@@ -65,6 +65,23 @@ make -f Makefile.pkcombu
 ```
 If the sources is successfully compiled, an execution file "pkcombu" will appear in the "../src" directory.
 
+### Set environment variables
+```bash
+echo 'export AutoFBDD_FOL=your_path_to_AutoFBDD_folder' >> ~/.bashrc
+echo 'export PATCHDOCK=your_path_to_patchdock_folder' >> ~/.bashrc
+echo 'export ROSETTA_FOL=your_path_to_rosetta_folder' >> ~/.bashrc
+echo 'export PATH=your_path_to_pkcombu_file:$PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+For example:
+```bash
+echo 'export AutoFBDD_FOL=/home/bailab/other/hqy/AutoFBDD' >> ~/.bashrc
+echo 'export PATCHDOCK=/home/bailab/other/hqy/PatchDock' >> ~/.bashrc
+echo 'export ROSETTA_FOL=/home/bailab/software/rosetta_src_2020.08.61146_bundle' >> ~/.bashrc
+echo 'export PATH=/home/bailab/other/hqy/AutoFBDD/eMolFrag:$PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+
 ## Datasets
 The benchmark datasets utilized in this project are PDBbind and CrossDocked.
 ### PDBbind
