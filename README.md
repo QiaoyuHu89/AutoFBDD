@@ -7,8 +7,8 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 </p>
 
 <p align="center">
-<img src="figures/AutoFBDD_animation.gif" 
-     alt="AutoFBDD Animation" 
+<img src="figures/Fragment_docking.gif" 
+     alt="Fragment Docking Animation" 
      width="550" 
      style="display: block; margin: 0 auto;"
      autoplay 
