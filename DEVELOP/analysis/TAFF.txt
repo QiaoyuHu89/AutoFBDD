@@ -1,0 +1,537 @@
+# A simplified version of Tripos Force Field treating small organic molecules
+#
+#
+######################
+#                    #
+#     Atom Type      #
+#                    #
+######################
+# Only C, N, O, S, P, H and halogen elements are included
+# No specific atom types included to treat water model
+#
+# COMPONENT   TYPE   SYMBOL   DEFINATION
+atom         1      C.3      carbon sp3
+atom         2      C.2      carbon sp2
+atom         3      C.1      carbon sp
+atom         4      C.ar     carbon aromatic
+atom         5      C.cat    carbocation used only in a guadinium group
+atom         6      N.3      nitrogen sp3
+atom         7      N.2      nitrogen sp2
+atom         8      N.1      nitrogen sp
+atom         9      N.pl3    nitrogen trigonal planar
+atom         10     N.am     nitrogen amide
+atom         11     N.4      nitrogen sp3 positively charged
+atom         12     N.ar     nitrogen aromatic
+atom         13     O.3      oxygen sp3
+atom         14     O.2      oxygen sp2
+atom         15     O.co2    oxygen in carboxylate and phosphate groups
+atom         16     S.3      sulfer sp3
+atom         17     S.2      sulfer sp2
+atom         18     S.o      sulfoxide sulfer
+atom         19     S.o2     sulfone sulfer
+atom         20     P.3      phosphorous sp3
+atom         21     H         hydrogen
+atom         22     Br       bromine
+atom         23     Cl       chlorine
+atom         24     F        fluorine
+atom         25     I        iodine
+atom         26     *        any atom
+#
+#
+######################
+#                    # 
+#    Bond Stretch    #
+#                    #
+######################
+# unit_k=kcal/mol
+# unit_r0=Angstrom
+#
+# COMPONENT ATOM1 ATOM2  ORDER  r0  k SOURCE
+bond    C.1	C.1	3	1.204	1400	JL_EST
+bond    C.1	C.1	1	1.38	700	MC_88
+bond    Br	C.2	1	1.89	500	EXP
+bond    C.1	C.2	1	1.44	1340	*
+bond    C.1	C.2	2	1.44	1340	*
+bond    C.2	C.2	2	1.335	1340	WHITE_77
+bond    C.2	C.2	1	1.47	700	MC_88
+bond    C.1	C.3	1	1.458	640	*
+bond    C.2	C.3	1	1.501	639	WHITE_75
+bond    C.3	C.3	1	1.54	633.6	*
+bond    Br	C.ar	1	1.85	500	*
+bond    C.1	C.ar	1	1.44	1340	*
+bond    C.2	C.ar	1	1.51	1340	*
+bond    C.3	C.ar	1	1.525	640	*
+bond    C.ar	C.ar	ar	1.395	1400	*
+bond    C.ar	C.ar	1	1.48	1000	*
+bond    C.2	Cl	1	1.75	520	*
+bond    C.3	Cl	1	1.767	600	*
+bond    C.ar	Cl	1	1.75	513.36	*
+bond    C.2	F	1	1.33	1200	*
+bond    C.3	F	1	1.36	600	*
+bond    C.ar	F	1	1.33	500	*
+bond    C.1	H	1	1.056	700	JL_EST
+bond    C.2	H	1	1.089	692	*
+bond    C.3	H	1	1.1	662.4	WHITE_77
+bond    C.ar	H	1	1.084	692	*
+bond    C.ar	I	1	2.05	490	*
+bond    C.1	N.1	3	1.158	1600	*
+bond    C.1	N.2	1	1.33	1300	*
+bond    C.1	N.2	2	1.33	1300	*
+bond    C.2	N.2	2	1.27	1305.94	*
+bond    C.2	N.2	1	1.444	1300	MC_88
+bond    C.3	N.2	1	1.44	760.2	*
+bond    C.ar	N.2	1	1.346	1305.94	*
+bond    N.2	N.2	2	1.346	1305.94	*
+bond    N.2	N.2	1	1.418	1300	MC_88
+bond    C.2	N.3	1	1.33	1300	EXP
+bond    C.2	N.3	am	1.345	870.1	ADDED AS DEFAULT
+bond    C.3	N.3	1	1.47	760	*
+bond    C.ar	N.3	1	1.41	720	EXP
+bond    H	N.3	1	1.08	692	*
+bond    C.2	N.4	1	1.33	1300	*
+bond    C.3	N.4	1	1.47	760	*
+bond    C.ar	N.4	1	1.41	720	*
+bond    C.2	N.am	am	1.345	870.1	*
+bond    C.2	N.am	1	1.345	870.1	*
+bond    C.3	N.am	1	1.45	677.6	*
+bond    C.ar	N.am	1	1.416	1090.08	*
+bond    H	N.am	1	1	700	*
+bond    N.2	N.am	1	1.44	667.6	*
+bond    N.am	N.am	1	1.45	744.48	*
+bond    C.ar	N.ar	ar	1.346	1305.94	*
+bond    N.ar	N.ar	ar	1.33	1400	*
+bond    C.2	N.pl3	1	1.3	1200	*
+bond    C.cat	N.pl3	ar	1.3	1200	MAC91
+bond    C.3	N.pl3	1	1.45	676	*
+bond    C.ar	N.pl3	1	1.35	1306	*
+bond    H	N.pl3	1	1.03	692	*
+bond    N.2	N.pl3	1	1.35	1305.94	EXP
+bond    C.1	O.2	2	1.207	1555.2	*
+bond    C.2	O.2	2	1.22	1555.2	*
+bond    C.ar O.2 ar 1.22 1555.2 ADDED AS DEFAULT
+bond    C.2	O.co2	ar	1.26	699.84	MAC91
+bond    C.2	O.co2	1	1.26	699.84	ADDED AS DEFAULT
+bond    C.2	O.co2	2	1.26	699.84	ADDED AS DEFAULT
+bond    N.am	O.2	1	1.24	1120	*
+bond    N.pl3	O.2	2	1.21	680	EXP
+bond    C.1	O.3	1	1.36	700	*
+bond    C.2	O.3	1	1.33	699.84	*
+bond    C.3	O.3	1	1.43	618.9	*
+bond    C.ar	O.3	1	1.39	700	*
+bond    H	O.3	1	0.95	1007.5	*
+bond    N.2	O.3	1	1.405	1200	*
+bond    N.pl3	O.3	1	1.4	620	EXP
+bond    O.3	O.3	1	1.48	1172.16	*
+bond    C.3	P.3	1	1.83	407.6	*
+bond    O.2	P.3	1	1.49	1400	*
+bond    O.2	P.3	2	1.49	1400	*
+bond    O.co2	P.3	ar	1.49	1400	MAC91
+bond    O.3	P.3	1	1.6	800	*
+bond    C.2	S.2	2	1.71	400	*
+bond    C.3	S.2	1	1.8	381.6	*
+bond    C.ar	S.2	1	1.74	700	*
+bond    C.ar  S.2 ar 1.74 700 ADDED AS DEFAULT
+bond    C.2	S.3	1	1.78	360	*
+bond    C.3	S.3	1	1.817	381.6	*
+bond    C.ar	S.3	1	1.77	360	*
+bond    N.3	S.3	1	1.625	360	*
+bond    N.4	S.3	1	1.625	360	*
+bond    O.2	S.3	2	1.45	600	*
+bond    S.3	S.3	1	2.03	600	EXP
+bond    C.2	S.o	1	1.71	360	TRIPOS_86
+bond    C.ar	S.o	1	1.71	360	ADDED AS DEFAULT
+bond    C.3	S.o	1	1.8	381.6	TRIPOS_86
+bond    O.2	S.o	2	1.45	600	*
+bond    O.3	S.o	1	1.5	600	*
+bond    Cl      S.o     1       1.99    600     ADDED AS DEFAULT
+bond    N.am    S.o     am      1.70    600     ADDED AS DEFAULT
+bond    N.3     S.o     am      1.70    600     ADDED AS DEFAULT
+bond    N.3     S.o     1       1.70    600     ADDED AS DEFAULT
+bond    C.3	S.o2	1	1.8	381.6	TRIPOS_86
+bond    C.ar	S.o2	1	1.71	360	ADDED AS DEFAULT
+bond    C.2	S.o2	1	1.71	360	ADDED AS DEFAULT
+bond    O.2	S.o2	2	1.45	600	TRIPOS_86
+bond    O.3	S.o2	1	1.5	600	*
+bond    Cl      S.o2    1       1.99    600     ADDED AS DEFAULT
+bond    N.am    S.o2    am      1.70    600     ADDED AS DEFAULT
+bond    N.3     S.o2    am      1.70    600     ADDED AS DEFAULT
+bond    N.3     S.o2    1       1.70    600     ADDED AS DEFAULT
+bond    *       H       1       1.008   700     *
+#
+#
+#####################
+#                   #
+#     ANGLE BEND    #
+#                   #
+#####################
+# unit_theta0=degree
+# unit_k=kcal/mol
+#
+# COMPONENT   ATOM1  ATOM2  ATOM3   theta0   k   SOURCE
+angle    *	C.1	*	180	0.04	*
+angle    C.1	C.1	C.2	180	0.04	JL_EST
+angle    C.2	C.1	N.1	180	0.04	*
+angle    C.3	C.1	N.1	180	0.04	*
+angle    C.ar	C.1	N.1	180	0.04	*
+angle    N.1	C.1	O.3	180	0.04	*
+angle    *	C.2	*	120	0.024	WHITE_77
+angle    *	C.2	O.co2	120	0.024	MAC91
+angle    *	C.cat	*	120	0.024	WHITE_77
+angle    Br	C.2	Br	120	0.02	EXP
+angle    Br	C.2	C.2	120	0.036	EXP
+angle    C.2	C.2	C.2	121.7	0.018	*
+angle    C.1	C.2	C.3	120	0.024	JL_EST
+angle    C.2	C.2	C.3	121	0.024	WHITE_77
+angle    C.3	C.2	C.3	116.4	0.046	WHITE_77
+angle    C.1	C.2	C.ar	120	0.024	*
+angle    C.2	C.2	C.ar	120	0.026	*
+angle    C.3	C.2	C.ar	120	0.024	EXP
+angle    C.ar	C.2	C.ar	120	0.024	*
+angle    C.2	C.2	Cl	120	0.036	*
+angle    C.ar	C.2	Cl	120	0.036	*
+angle    Cl	C.2	Cl	122	0.03	*
+angle    *	C.2	H	120	0.012	JL_EST
+angle    C.1	C.2	N.2	123	0.07	*
+angle    C.2	C.2	N.2	120	0.024	*
+angle    C.3	C.2	N.2	118	0.02	*
+angle    C.ar	C.2	N.2	120	0.04	*
+angle    C.2	C.2	N.3	120	0.024	*
+angle    C.3	C.2	N.3	118	0.04	EXP
+angle    N.2	C.2	N.3	121.8	0.03	EXP
+angle    N.3	C.2	N.3	116.4	0.03	EXP
+angle    C.2	C.2	N.am	120	0.024	*
+angle    C.3	C.2	N.am	117	0.02	WHITE_75
+angle    C.ar	C.2	N.am	120	0.04	*
+angle    N.2	C.2	N.am	123	0.07	*
+angle    N.am	C.2	N.am	120	0.03	*
+angle    C.2	C.2	N.pl3	120	0.024	*
+angle    C.3	C.2	N.pl3	117	0.02	EXP
+angle    N.2	C.2	N.pl3	123	0.07	EXP
+angle    C.1	C.2	O.2	120	0.06	JL_EST
+angle    C.1	C.2	O.co2	120	0.06	MAC91
+angle    C.2	C.2	O.2	120	0.026	*
+angle    C.2	C.2	O.co2	120	0.026	MAC91
+angle    C.3	C.2	O.2	120	0.026	*
+angle    C.3	C.2	O.co2	118	0.026	MAC91
+angle    C.ar	C.2	O.2	120	0.026	*
+angle    C.ar	C.2	O.co2	120	0.026	MAC91
+angle    N.3	C.2	O.2	120	0.026	EXP
+angle    N.3	C.2	O.co2	120	0.026	MAC91
+angle    N.am	C.2	O.2	123	0.03	WHITE_75
+angle    N.am	C.2	O.co2	123	0.03	MAC91
+angle    N.pl3	C.2	O.2	123	0.03	EXP
+angle    N.pl3	C.2	O.co2	123	0.03	MAC91
+angle    C.2	C.2	O.3	120	0.072	*
+angle    C.3	C.2	O.3	114	0.03	*
+angle    C.ar	C.2	O.3	120	0.03	*
+angle    N.am	C.2	O.3	110.5	0.014	*
+angle    O.2	C.2	O.3	120	0.03	*
+angle    O.co2	C.2	O.co2	124	0.03	MAC91
+angle    N.2	C.2	S.3	125.6	0.028	*
+angle    N.am	C.2	S.3	111.5	0.03	*
+angle    O.2	C.2	S.3	125	0.016	*
+angle    O.co2	C.2	S.3	125	0.016	MAC91
+angle    *	C.3	*	109.5	0.02	WHITE_77
+angle    C.2	C.3	C.2	109.5	0.018	*
+angle    C.1	C.3	C.3	109.5	0.024	*
+angle    C.2	C.3	C.3	109.5	0.018	WHITE_75
+angle    C.3	C.3	C.3	109.5	0.024	*
+angle    C.2	C.3	C.ar	109.47	0.018	*
+angle    C.3	C.3	C.ar	109.5	0.024	*
+angle    C.ar	C.3	C.ar	109.5	0.018	*
+angle    C.3	C.3	Cl	109.5	0.02	*
+angle    Cl	C.3	Cl	109.5	0.02	*
+angle    C.ar	C.3	F	110	0.024	JL_EST
+angle    F	C.3	F	109.5	0.04	*
+angle    *	C.3	H	109.5	0.016	WHITE_77
+angle    C.2	C.3	H	110	0.016	WHITE_75
+angle    H	C.3	H	109.5	0.024	WHITE_75
+angle    C.3	C.3	N.2	109.5	0.018	*
+angle    C.2	C.3	N.3	109.5	0.018	*
+angle    C.3	C.3	N.3	109.5	0.024	*
+angle    C.ar	C.3	N.3	109.5	0.018	*
+angle    C.2	C.3	N.am	109.5	0.022	*
+angle    C.3	C.3	N.am	109.5	0.018	*
+angle    C.ar	C.3	N.am	109.5	0.02	EXP
+angle    H	C.3	N.am	110	0.02	WHITE_75
+angle    N.2	C.3	N.am	109.5	0.02	EXP
+angle    N.am	C.3	N.am	109.5	0.04	*
+angle    F	C.3	N.ar	109.5	0.04	*
+angle    C.2	C.3	N.pl3	109.5	0.018	*
+angle    C.3	C.3	N.pl3	109.5	0.02	*
+angle    C.ar	C.3	N.pl3	109.5	0.02	*
+angle    C.2	C.3	O.3	109.5	0.022	*
+angle    C.3	C.3	O.3	109.5	0.022	*
+angle    C.ar	C.3	O.3	109.5	0.018	*
+angle    N.am	C.3	O.3	109.5	0.02	*
+angle    O.3	C.3	O.3	109.5	0.02	*
+angle    C.3	C.3	P.3	112	0.014	*
+angle    C.2	C.3	S.2	109.5	0.018	*
+angle    C.3	C.3	S.2	109.5	0.018	*
+angle    N.am	C.3	S.2	109.5	0.04	*
+angle    C.2	C.3	S.3	107.8	0.018	*
+angle    C.3	C.3	S.3	107.8	0.018	*
+angle    C.ar	C.3	S.3	107.8	0.018	*
+angle    N.am	C.3	S.3	109.5	0.024	JL_EST
+angle    O.3	C.3	S.3	107.8	0.02	*
+angle    *	C.ar	*	120	0.024	*
+angle    Br	C.ar	C.ar	120	0.036	*
+angle    C.2	C.ar	C.ar	120	0.024	*
+angle    C.3	C.ar	C.ar	120	0.024	*
+angle    C.ar	C.ar	C.ar	120	0.024	*
+angle    C.ar	C.ar	Cl	120	0.036	*
+angle    C.ar	C.ar	F	120	0.036	*
+angle    C.ar	C.ar	I	120	0.036	*
+angle    C.3	C.ar	N.2	120	0.04	*
+angle    C.ar	C.ar	N.2	120	0.04	*
+angle    N.2	C.ar	N.2	120	0.04	*
+angle    C.ar	C.ar	N.3	120	0.062	EXP
+angle    C.ar	C.ar	N.am	120	0.062	*
+angle    N.2	C.ar	N.am	118	0.04	*
+angle    N.am	C.ar	N.am	120	0.03	*
+angle    C.2	C.ar	N.ar	120	0.04	EXP
+angle    C.3	C.ar	N.ar	120	0.04	EXP
+angle    C.ar	C.ar	N.ar	120	0.024	EXP
+angle    N.am	C.ar	N.ar	118	0.04	EXP
+angle    C.3	C.ar	N.pl3	120	0.04	*
+angle    C.ar	C.ar	N.pl3	120	0.04	*
+angle    N.2	C.ar	N.pl3	120	0.04	*
+angle    N.am	C.ar	N.pl3	120	0.04	*
+angle    N.pl3	C.ar	N.pl3	120	0.04	*
+angle    C.3	C.ar	O.3	120	0.04	*
+angle    C.ar	C.ar	O.3	120	0.062	*
+angle    C.ar	C.ar	S.2	120	0.062	*
+angle    C.ar	C.ar	S.3	120	0.062	*
+angle    *	N.1	*	180	0.08	*
+angle    *	N.2	*	120	0.04	*
+angle    C.1	N.2	C.2	120	0.04	*
+angle    C.2	N.2	C.2	123	0.08	EXP
+angle    C.2	N.2	C.3	110	0.082	*
+angle    C.2	N.2	C.ar	123	0.08	*
+angle    C.3	N.2	C.ar	110	0.082	*
+angle    C.ar	N.2	C.ar	120	0.04	*
+angle    C.2	N.2	N.2	112	0.044	*
+angle    C.3	N.2	N.2	118	0.04	*
+angle    C.ar	N.2	N.2	118	0.04	*
+angle    C.2	N.2	N.am	120	0.044	EXP
+angle    C.2	N.2	N.pl3	120	0.044	EXP
+angle    C.2	N.2	O.3	105	0.044	EXP
+angle    *	N.3	*	109.5	0.04	*
+angle    C.2	N.3	C.3	110	0.04	EXP
+angle    C.3	N.3	C.3	109.5	0.018	*
+angle    C.3	N.3	C.ar	118	0.04	EXP
+angle    C.ar	N.3	C.ar	118	0.04	EXP
+angle    C.3	N.3	S.2	109.5	0.04	*
+angle    *	N.4	*	109.5	0.01	TRIPOS_86
+angle    C.3	N.4	C.3	109.5	0.018	*
+angle    *	N.am	*	120	0.02	*
+angle    C.2	N.am	C.2	120	0.018	*
+angle    C.2	N.am	C.3	118	0.044	*
+angle    C.3	N.am	C.3	122	0.04	*
+angle    C.2	N.am	C.ar	120	0.052	*
+angle    C.3	N.am	C.ar	118	0.044	*
+angle    C.ar	N.am	C.ar	120	0.044	*
+angle    C.2	N.am	H	119	0.016	WHITE_75
+angle    C.3	N.am	H	117	0.02	WHITE_75
+angle    C.2	N.am	N.2	120	0.018	EXP
+angle    C.3	N.am	N.2	120	0.024	*
+angle    C.ar	N.am	N.2	109.5	0.044	*
+angle    C.2	N.am	N.am	120	0.018	*
+angle    C.3	N.am	N.am	120	0.024	*
+angle    C.ar	N.am	N.am	120	0.052	*
+angle    C.2	N.am	O.2	120	0.024	*
+angle    C.3	N.am	O.2	120	0.02	*
+angle    C.ar	N.am	O.2	120	0.024	*
+angle    O.2	N.am	O.2	120	0.02	*
+angle    *	N.ar	*	120	0.02	*
+angle    C.ar	N.ar	C.ar	120	0.04	EXP
+angle    *	N.pl3	*	120	0.04	*
+angle    C.2	N.pl3	C.2	120	0.04	EXP
+angle    C.2	N.pl3	C.ar	120	0.04	EXP
+angle    C.3	N.pl3	C.ar	120	0.04	*
+angle    C.ar	N.pl3	C.ar	120	0.04	*
+angle    C.2	N.pl3	N.2	120	0.018	EXP
+angle    C.ar	N.pl3	N.2	120	0.018	EXP
+angle    C.2	N.pl3	O.2	112	0.04	EXP
+angle    O.2	N.pl3	O.2	127	0.06	EXP
+angle    *	O.3	*	109.5	0.02	*
+angle    C.2	O.3	C.2	110	0.02	*
+angle    C.2	O.3	C.3	109.5	0.044	*
+angle    C.3	O.3	C.3	109.5	0.044	*
+angle    C.2	O.3	C.ar	110	0.02	*
+angle    C.3	O.3	C.ar	110	0.02	*
+angle    C.ar	O.3	C.ar	110	0.02	*
+angle    C.ar O.2 C.ar  110 0.02  ADDED AS DEFAULT
+angle    C.2	O.3	N.2	108.5	0.044	EXP
+angle    C.3	O.3	O.3	103.9	0.094	*
+angle    C.3	O.3	P.3	120	0.01	*
+angle    H	O.3	H	104.5	0.02	MC90
+angle    *	P.3	*	109.5	0.02	*
+angle    O.2	P.3	O.2	109.5	0.02	*
+angle    O.2	P.3	O.3	109.5	0.02	*
+angle    O.3	P.3	O.3	109.5	0.02	*
+angle    *	S.2	*	110	0.04	*
+angle    C.3	S.2	N.3	111	0.04	*
+angle    C.ar	S.2	N.3	111	0.04	*
+angle    *	S.3	*	97	0.02	*
+angle    C.2	S.3	C.3	94.3	0.022	*
+angle    C.3	S.3	C.3	98	0.02	*
+angle    C.ar	S.3	C.ar	97.5	0.062	*
+angle    C.ar S.2 C.ar  97.5  0.062 ADDED AS DEFAULT
+angle    C.3	S.3	S.3	102.9	0.06	EXP
+angle    *      S.o     *       107     0.04    ADDED AS DEFAULT VAULE
+angle    *	S.o	O.2	107	0.04	TRIPOS_86
+angle    *      S.o2    *       107     0.04    ADDED AS DEFAULT VAULE
+angle    *	S.o2	O.2	107	0.04	TRIPOS_86
+angle    O.2	S.o2	O.2	118	0.04	TRIPOS_86
+#
+#
+######################
+#                    #
+#      OOP BEND      #
+#                    #
+######################
+# unit_k=kcal/mol
+#
+# COMPONENT  ATOM   k      SOURCE
+oopbend     C.2	   480	  TRIPOS_85
+oopbend     C.cat  480	  MAC91
+oopbend     C.ar   630	  MCAROM
+oopbend     N.2	   120	  TRIPOS_85
+oopbend     N.am   120	  TRIPOS_85
+oopbend     N.ar   120	  TRIPOS_85
+oopbend     N.pl3  120	  TRIPOS_85
+#
+#
+######################
+#                    #
+#      TORSION       #
+#                    #
+######################
+# unit_V=kcal/mol
+# unit_n=1
+#
+# COMPONENT   ATOM1    ATOM2   ATOM3   ATOM4   V   n    SOURCE
+torsion    *	C.1	C.1	*	3	0	1	JL_EST
+torsion    *	C.1	C.1	*	1	0	1	*
+torsion    *	C.1	C.2	*	1	0	1	*
+torsion    *	C.1	C.2	*	2	0	1	*
+torsion    *	C.2	C.2	*	2	12.5	-2	WHITE_77
+torsion    *	C.2	C.2	*	1	1.424	-2	*
+torsion    *	C.2	C.cat	*	1	1.424	-2	*
+torsion    *	C.1	C.3	*	1	0	1	*
+torsion    *	C.2	C.3	*	1	0.12	-3	*
+torsion    *	C.2	C.3	C.2	1	0.126	3	WHITE_77
+torsion    *	C.2	C.3	C.3	1	0.126	3	WHITE_77
+torsion    *	C.2	C.3	H	1	0.274	3	WHITE_77
+torsion    O.2	C.2	C.3	C.3	1	0.7	-3	JL_EST
+torsion    O.co2	C.2	C.3	C.3	1	0.7	-3	MAC91
+torsion    *	C.3	C.3	*	1	0.2	3	*
+torsion    C.2	C.3	C.3	C.2	1	0.04	3	WHITE_77
+torsion    C.2	C.3	C.3	C.3	1	0.126	3	WHITE_77
+torsion    C.3	C.3	C.3	C.3	1	0.5	3	MC_88
+torsion    *	C.3	C.3	H	1	0.32	3	MC_88
+torsion    *	C.1	C.ar	*	1	0	1	*
+torsion    *	C.2	C.ar	*	1	1.6	-2	*
+torsion    *	C.3	C.ar	*	1	0.12	-3	*
+torsion    *	C.ar	C.ar	*	ar	2	-2	*
+torsion    *	C.ar	C.ar	C.ar	ar	2.35	-2	MCAROM
+torsion    *	C.ar	C.ar	*	1	0.6	-2	*
+torsion    *	C.1	N.2	*	1	0	1	*
+torsion    *	C.1	N.2	*	2	0	1	*
+torsion    *	C.2	N.2	*	2	12	-2	*
+torsion    *	C.2	N.2	*	1	12	-2	*
+torsion    *	C.3	N.2	*	1	0.4	-3	*
+torsion    *	C.ar	N.2	*	1	1.6	-2	*
+torsion    *	N.2	N.2	*	2	1.6	-2	*
+torsion    *	N.2	N.2	*	1	1.6	-2	*
+torsion    *	C.2	N.3	*	1	0.12	-3	*
+torsion    *	C.2	N.3	*	am	6.46	-2	*
+torsion    *	C.3	N.3	*	1	0.2	3	*
+torsion    *	C.ar	N.3	*	1	0.12	-3	*
+torsion    *	N.3	N.3	*	1	0.2	3	*
+torsion    *	C.2	N.am	*	am	6.46	-2	*
+torsion    *	C.2	N.am	*	1	6.46	-2	*
+torsion    *	C.3	N.am	*	1	0.2	3	*
+torsion    *	C.ar	N.am	*	1	1.6	-2	*
+torsion    *	N.2	N.am	*	1	1.6	-2	*
+torsion    *	N.3	N.am	*	1	0.12	-3	*
+torsion    *	N.am	N.am	*	1	1.6	-2	*
+torsion    *	C.ar	N.ar	*	ar	1.6	-2	EXP
+torsion    *	C.2	N.pl3	*	1	12	-2	*
+torsion    *	C.cat	N.pl3	*	ar	12	-2	MAC91
+torsion    *	C.3	N.pl3	*	1	0.4	-3	*
+torsion    *	C.ar	N.pl3	*	1	1.6	-2	*
+torsion    *	N.2	N.pl3	*	1	1.6	-2	*
+torsion    *	N.pl3	N.pl3	*	1	1.6	-2	*
+torsion    *	C.1	O.3	*	1	0	1	*
+torsion    *	C.2	O.3	*	1	5.8	-2	*
+torsion    *	C.3	O.3	*	1	1.2	3	*
+torsion    *	C.ar	O.3	*	1	1.2	-2	*
+torsion    *  	C.ar  	O.2 	* 	ar 	1.2 	-2 	ADDED AS DEFAULT
+torsion    *	N.2	O.3	*	1	1	2	EXP
+torsion    *  	N.ar 	O.2 	* 	ar 	1 	-2 	ADDED AS DEFAULT
+torsion    *	N.3	O.3	*	1	0.2	3	*
+torsion    *	C.2	P.3	*	1	1	-2	*
+torsion    *	C.3	P.3	*	1	0.4	3	*
+torsion    *	C.ar	P.3	*	1	1	3	*
+torsion    *	O.3	P.3	*	1	0.4	3	*
+torsion    *	C.2	S.2	*	2	1	-2	*
+torsion    *	C.3	S.2	*	1	0.4	3	*
+torsion    *	C.ar	S.2	*	1	1	3	*
+torsion    *  	C.ar  	S.2 	* 	ar 	1 	-2 	ADDED AS DEFAULT
+torsion    *	N.3	S.2	*	1	0.4	3	*
+torsion    *	C.2	S.3	*	1	1	-2	*
+torsion    *	C.3	S.3	*	1	0.4	3	*
+torsion    *	C.ar	S.3	*	1	1	3	*
+torsion    *	S.3	S.3	*	1	6.75	2	EXP
+torsion    C.2	C.2	C.3	C.2	1	0.126	-3	WHITE_77
+torsion    C.2	C.2	C.3	H	1	0.273	-3	WHITE_77
+torsion    C.3	C.2	C.3	C.2	1	0.126	3	WHITE_77
+torsion    C.3	C.2	C.3	C.3	1	0.126	3	WHITE_77
+torsion    C.3	C.2	C.3	H	1	0.274	3	WHITE_77
+torsion    H	C.2	C.3	C.2	1	0.274	3	WHITE_77
+torsion    H	C.2	C.3	H	1	0.274	3	WHITE_77
+torsion    C.2	C.2	C.3	*	1	0.126	-3	WHITE_77
+torsion    C.3	C.2	C.3	*	1	0.126	3	WHITE_77
+torsion    H	C.2	C.3	*	1	0.274	3	WHITE_77
+torsion    C.2	C.2	C.3	C.3	1	0.126	-3	WHITE_77
+#
+#
+#####################
+#                   #
+#        VDW        #
+#                   #
+#####################
+# unit_r=Ansgtrom
+# unit_epsilon=kcal/mol
+#
+# COMPONENT    ATOM    r    epsilon    SOURCE
+vdw     C.3	1.7	0.107	*
+vdw     C.2	1.7	0.107	*
+vdw     C.cat	1.7	0.107	*
+vdw     C.ar	1.7	0.107	*
+vdw     C.1	1.7	0.107	*
+vdw     N.3	1.55	0.095	*
+vdw     N.2	1.55	0.095	*
+vdw     N.1	1.55	0.095	*
+vdw     O.3	1.52	0.116	*
+vdw     O.2	1.52	0.116	*
+vdw     O.co2	1.52	0.116	*
+vdw     S.3	1.8	0.314	*
+vdw     N.ar	1.55	0.095	*
+vdw     P.3	1.8	0.314	*
+vdw     H	1.5	0.042	*
+vdw     Br	1.85	0.434	*
+vdw     Cl	1.75	0.314	*
+vdw     F	1.47	0.109	*
+vdw     I	1.98	0.623	*
+vdw     S.2	1.8	0.314	*
+vdw     N.pl3	1.55	0.095	*
+vdw     N.am	1.55	0.095	*
+vdw     S.o	1.7	0.314	*
+vdw     S.o2	1.7	0.314	*
+vdw     N.4	1.55	0.095	*
+#
+#
+end

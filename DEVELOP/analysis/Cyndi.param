@@ -1,0 +1,21 @@
+MOGA_Max_Conformers		400
+MOGA_Max_Generation		1000
+MOGA_Population_Size		10000
+MOGA_Max_Run		1
+MOGA_Crossover_Probability		0.8
+MOGA_Mutation_Probability		0.1
+MOGA_SBX		15 20
+MOGA_ForceField_Type[TAFF/MMFF94]   MMFF94 
+MOGA_Num_Objectives	 2	
+MOGA_VDW_Energy_Epsilon		5.0
+MOGA_Torsion_Energy_Epsilon		3.0
+MOGA_RMSD_Epsilon		0.4
+MOGA_Gyration_Radius_Epsilon		0.1
+MOGA_Top_Epsilon    0.5 
+MOGA_Keep_Input_Conformer[Y/N]  Y	
+MOGA_Optimize_Conformer[Y/N]  Y 
+	
+MOGA_Energy_Cutoff		1000.0
+MOGA_RMSD_Scale_Factor		1.0
+MOGA_Max_Opt_Iteration		100
+# MOGA_Random_Seed[0-1]		0.789
