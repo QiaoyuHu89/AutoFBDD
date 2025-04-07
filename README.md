@@ -6,7 +6,7 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   <strong>图1.</strong> AutoFBDD模型框架示意图
 </p>
 
-| 左图 | 中图 | 右图 |
+| Fragment Docking | Fragment Linking (2 fragments)| Fragment Linking (3 fragments) |
 |------|------|------|
 | <img src="figures/Fragment_docking.gif" width="300" /> | <img src="figures/Fragment_linking_1.gif" width="300" /> | <img src="figures/Fragment_linking_2.gif" width="300" /> |
 | **左图标题** | **中图标题** | **右图标题** |
