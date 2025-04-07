@@ -83,13 +83,16 @@ source ~/.bashrc
 ```
 
 ## Brick library
-You can download the brick library from [here](https://drive.google.com/drive/folders/1pQk1FASCnCLjYRd7yc17WfctoHR50s2r):
+You can download the brick library `brick_library.tar.gz` from [here](https://drive.google.com/drive/folders/1pQk1FASCnCLjYRd7yc17WfctoHR50s2r):
 * `all`: the complete brick library filtered by similarity threshold of 1.0, the number of brick is 98,679.
 * `all_0.8`: the brick library filtered by similarity threshold of 0.8, the number of brick is 93,340.
 * `all_0.6`: the brick library filtered by similarity threshold of 0.6, the number of brick is 54,693.
 * `all_0.4`: the brick library filtered by similarity threshold of 0.4, the number of brick is 16,005.
 
 ## Generation of small molecules
+```bash
+python AutoFBDD.py --mode linking --brick_mode brick --folder WDR5_linking_all --input_pdb WDR5.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 10 --poses 3
+```
 
 ## Generation of PROTACs
 
