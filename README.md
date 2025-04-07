@@ -98,6 +98,13 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 * `folder`: working folder name.
 * `input_pdb`: input pdb file.
 * `center`: pocket center file (xyz coordiantes of protein binding pocket center). An example is provided in /ifitdock/center.txt.
+* `brickfolder`: brick folder. If you want to use our brick_library, please specify all or all_0.8 or all_0.6 or all_0.4. Otherwise, provide your own brick or molecule folder and put it in the AutoFBDD main folder.
+* `brickfile_list`: brick file list, just give an empty txt file that can be used to store bricks.
+* `num_cpu`: the number of cpu used in parallel run.
+* `sep_bricks`: the number of bricks in each brick list file.
+* `top_clusters`: the number of top fragment clusters saved.
+* `dis_val`: threshold distance value of two bricks for brick linking.
+* `poses`: the number of poses saved for each pair of linked or grown bricks.
 
 ## Generation of PROTACs
 
