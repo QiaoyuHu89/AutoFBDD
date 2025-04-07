@@ -1,0 +1,15 @@
+ligand_name     WDR5__cluster_core.mol2
+atom_model                       all
+grid_score_rep_rad_scale         1
+grid_score_vdw_scale             1
+grid_score_es_scale              1
+grid_score_grid_prefix    1OWE_1
+vdw_defn_file                    vdw.defn
+flex_defn_file                   flex.defn
+flex_drive_file                  flex_drive.tbl
+chem_defn_file                   chem.defn
+gbsa_zou_gb_grid_prefix     1OWE_GB_1
+gbsa_zou_sa_grid_prefix     1OWE_SA_1
+gbsa_zou_vdw_grid_prefix     1OWE_GB_1
+gbsa_zou_screen_file             screen.in
+gbsa_zou_solvent_dielectric      78.300003

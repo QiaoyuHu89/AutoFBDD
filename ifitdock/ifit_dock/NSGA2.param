@@ -1,0 +1,52 @@
+#Running mode choice:(0~12)
+RUN_MODE      14
+#Number of objective functions
+NUM_OBJ_FUNC    2
+STRATEGY        2
+#Choice for optimization method % NSGA2 or NSGA2&MOPSO
+OPTIMIZATION_METHOD   NSGA2
+#Number of constraint solutions
+NUM_CONS    0
+#Population size
+POP_SIZE     2000
+#Possibility of the cross over
+PCROSS     0.9
+#Possibility of the mutation
+PMUT      0.3
+#SBX varible
+ETA_C  10
+#SBX varible
+ETA_M   10
+#Generation of NSGA
+GEN    200
+#Starting mutation point of variables
+NREAL_MUTE  0.2
+#Staring cross point of variables
+NREAL_CROSS  0.8
+#Lower limit for transition
+MIN_REAL_TRANS        -2.0  -2.0  -2.0  -3.142  -3.142   -3.142
+#Upper limitfor transition
+MAX_REAL_TRANS           2.0   2.0  2.0   3.142  3.142  3.142
+#Range for rotation
+RANGE_OF_ROTATE         -3.142     3.142
+#Maximum size of the non-dominated soultions
+MAX_FEASIBLE        1000
+#Maximum speed of the partical
+MAX_VELOCITY           0.2
+#Minimum speed of the partical
+MIN_VELOCITY     1.0
+ACTIVE_SITE               15.500000 18.900000 24.000000
+EPSILON      0.1   0.1    0.1    0.1
+ENERGY_WEIGHTS      1.0  1.0  1.0  1.0
+OUTPUT    cluster_out
+RECEPTOR      1OWE_noH.pdb
+#Number of conformations per ligand required to output
+NUM_CONF_PER_LIG  1
+#Score cutoff for determing the output of docked ligands
+SCORE_CUTOFF   -5.0
+INDUCEFIT    1
+METAL_SWITCH   0
+METAL_FILE   metal.txt
+LIG_ELE_CHOICE   1
+CHOICE_FOR_SOLVENT 0 1B_H2O_opti.mol2
+CLUSTER_PARAMETER  3  1.
