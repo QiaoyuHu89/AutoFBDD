@@ -36,17 +36,26 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 conda env create -f AutoFBDD.yml
 # Activate the AutoFBDD environment
 conda activate AutoFBDD
+
 # Create the DeepPROTACs environment
 conda env create -f DeepPROTACs.yml
 # Activate the DeepPROTACs environment
 conda activate DeepPROTACs
 ```
 
-### Install Vina Docking
+### Install Rosetta
+Download the Rosetta software from [here](https://downloads.rosettacommons.org/downloads/academic/2020/wk08/).
+Uncompress the file by running this command in terminal.
 ```bash
-pip install meeko==0.1.dev3 scipy pdb2pqr vina==1.2.2
-python -m pip install git+https://github.com/Valdes-Tresanco-MS/AutoDockTools_py3
+tar -xvzf rosetta_src_2020.08.61146_bundle.tgz
 ```
+Now you can build Rosetta using this general command line.
+```bash
+cd rosetta_src_2020.08.61146_bundle/main/source
+./scons.py -j 20 mode=release bin
+```
+`-j` is indicating how many cores you want to use. This number depends on your computer.
+
 
 ### Install other required softwares
 ```bash
