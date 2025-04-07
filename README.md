@@ -6,16 +6,37 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   <strong>图1.</strong> AutoFBDD模型框架示意图
 </p>
 
-<p align="center">
-<img src="figures/Fragment_docking.gif" 
-     alt="Fragment Docking Animation" 
-     width="550" 
-     style="display: block; margin: 0 auto;"
-     autoplay 
-     loop 
-     muted><br>
-  <strong>图2.</strong> AutoFBDD小分子和PROTAC生成动画
-</p>
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+  <!-- 图片1（左） -->
+  <div style="flex: 1; text-align: center;">
+    <img src="figures/Fragment_docking.gif" 
+         alt="Fragment Docking Animation" 
+         width="300"
+         style="display: block; margin: 0 auto;"
+         autoplay loop muted>
+    <p><strong>图1.</strong> 左图说明</p>
+  </div>
+
+  <!-- 图片2（中） -->
+  <div style="flex: 1; text-align: center;">
+    <img src="figures/Fragment_linking_1.gif" 
+         alt="Fragment Docking Animation" 
+         width="300"
+         style="display: block; margin: 0 auto;"
+         autoplay loop muted>
+    <p><strong>图2.</strong> 中图说明</p>
+  </div>
+
+  <!-- 图片3（右） -->
+  <div style="flex: 1; text-align: center;">
+    <img src="figures/Fragment_linking_2.gif" 
+         alt="Fragment Docking Animation" 
+         width="300"
+         style="display: block; margin: 0 auto;"
+         autoplay loop muted>
+    <p><strong>图3.</strong> 右图说明</p>
+  </div>
+</div>
 
 ## Installation
 
