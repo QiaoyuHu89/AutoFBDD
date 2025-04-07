@@ -82,6 +82,17 @@ echo 'export PATH=/home/bailab/other/hqy/AutoFBDD/eMolFrag:$PATH' >> ~/.bashrc
 source ~/.bashrc
 ```
 
+## Brick library
+You can download the brick library from [here](https://drive.google.com/drive/folders/1pQk1FASCnCLjYRd7yc17WfctoHR50s2r):
+* `all`: the complete brick library filtered by similarity threshold of 1.0, the number of brick is 98,679.
+* `all_0.8`: the brick library filtered by similarity threshold of 0.8, the number of brick is 93,340.
+* `all_0.6`: the brick library filtered by similarity threshold of 0.6, the number of brick is 54,693.
+* `all_0.4`: the brick library filtered by similarity threshold of 0.4, the number of brick is 16,005.
+
+## Generation of small molecules
+
+## Generation of PROTACs
+
 ## Datasets
 The benchmark datasets utilized in this project are PDBbind and CrossDocked.
 ### PDBbind
