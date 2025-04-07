@@ -6,10 +6,27 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
   <strong>图1.</strong> AutoFBDD模型框架示意图
 </p>
 
-| Fragment Docking | Fragment Linking (2 fragments)| Fragment Linking (3 fragments) |
-|------|------|------|
-| <img src="figures/Fragment_docking.gif" width="300" /> | <img src="figures/Fragment_linking_1.gif" width="300" /> | <img src="figures/Fragment_linking_2.gif" width="300" /> |
-| **左图标题** | **中图标题** | **右图标题** |
+<table align="center">
+  <tr>
+    <td><img src="figures/Fragment_docking.gif" width="250" /></td>
+    <td><img src="figures/Fragment_linking_1.gif" width="250" /></td>
+    <td><img src="figures/Fragment_linking_2.gif" width="250" /></td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center"><strong>图2.</strong>AutoFBDD片段对接及片段连接动态图</td>
+  </tr>
+</table>
+
+<p align="center">
+<img src="figures/PROTACs.gif" 
+     alt="PROTACs Animation" 
+     width="700" 
+     style="display: block; margin: 0 auto;"
+     autoplay 
+     loop 
+     muted><br>
+  <strong>图3.</strong> AutoFBDD生成PROTACs动态图
+</p>
 
 ## Installation
 
