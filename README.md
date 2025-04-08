@@ -134,3 +134,4 @@ python DeepPROTACs.py --folder folder --target target.pdb --E3_ligase E3_ligase.
 * `top_docking`: the number of top rosetta docking results extracted. This value must match the 'top_docking' parameter specified in the AutoPROTACs arguments.
 
 ## Citation
+Please consider citing our paper if you find it helpful. Thank you!
