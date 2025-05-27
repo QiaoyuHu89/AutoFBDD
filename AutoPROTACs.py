@@ -27,9 +27,9 @@ from rdkit.Chem import RDConfig
 sys.path.append(os.path.join(RDConfig.RDContribDir, 'SA_Score'))
 import sascorer
 from data.prepare_data_linker_design import read_file_edit, preprocess
-from data_pre_for_linking_pharms import obtain_dummy, cal_dummy_dist, cal_dis_ang, obtain_linker_pharma
-from brick_linking_pharms import linking_bricks
-from assess_linking_pharms import delete_du, assess_mols_RMSD, assess_mols_pharm, extract_sdf
+from data_pre_for_linking import obtain_dummy, cal_dummy_dist, cal_dis_ang, obtain_linker_pharma
+from brick_linking import linking_bricks
+from assess_linking import delete_du, assess_mols_RMSD, assess_mols_pharm, extract_sdf
 
 
 # Delete hydrogens of brick mol2 file and save as sdf file
@@ -368,7 +368,7 @@ def generate_linker(results_list, warhead, E3_ligand, warhead_anchor_id, ligand_
         print(folder + ' min_dist: ' + str(min_dist))
         if min_dist >= 2.0:
             try:
-                os.system('cp ' + AutoFBDD_FOL +'/DEVELOP/models/linker_design/pretrained_DEVELOP_model_pharms.pickle .')
+                os.system('cp ' + AutoFBDD_FOL +'/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle .')
                 data_path, frag_sdf = cal_dis_ang(new_warhead, new_E3_ligand, new_warhead_anchor_id, new_ligand_anchor_id, folder)
                 linker_pharma_sdf = folder + '_linker_pharma.sdf'
                 pharm_count = obtain_linker_pharma(du_surround_mol, frag_sdf, linker_pharma_sdf)
