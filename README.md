@@ -92,7 +92,7 @@ You can download the brick library `brick_library.tar.gz` from [here](https://dr
 ## Generation of small molecules
 ```bash
 conda activate AutoFBDD
-python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 10 --poses 3
+python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 6 --poses 3
 ```
 * `mode`: FBDD mode (linking or growing).
 * `brick_mode`: brick mode (brick or mol). If you want to use brick_library or provide your own brickfolder, please specify brick in brick_mode. If you have a list of small molecules and want to cut them into bricks, please specify mol in brick_mode.
@@ -104,6 +104,7 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 * `num_cpu`: the number of cpu used in parallel run.
 * `sep_bricks`: the number of bricks in each brick list file.
 * `top_clusters`: the number of top fragment clusters saved.
+* `top_bricks`: the number of top bricks saved in each cluster.
 * `dis_val`: threshold distance value of two bricks for brick linking.
 * `poses`: the number of poses saved for each pair of linked or grown bricks.
 
