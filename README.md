@@ -33,12 +33,12 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 ### Install conda environment via yaml file
 ```bash
 # Create the AutoFBDD environment
-conda env create -f AutoFBDD.yml
+conda env create -f AutoFBDD.yaml
 # Activate the AutoFBDD environment
 conda activate AutoFBDD
 
 # Create the DeepPROTACs environment
-conda env create -f DeepPROTACs.yml
+conda env create -f DeepPROTACs.yaml
 # Activate the DeepPROTACs environment
 conda activate DeepPROTACs
 ```
