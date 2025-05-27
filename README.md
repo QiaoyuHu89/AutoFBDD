@@ -111,7 +111,7 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 ## Generation of PROTACs
 ```bash
 conda activate AutoFBDD
-python AutoPROTACs.py --folder folder --target target.pdb --warhead_anchor_id num --E3_ligase E3_ligase.pdb --E3_ligand E3_ligand.mol2 --ligand_anchor_id num --min_dist 5 --max_dist 15 --num_cpu 20 --top_docking 100
+python AutoPROTACs.py --folder folder --target target.pdb --warhead_anchor_id num --E3_ligase E3_ligase.pdb --E3_ligand E3_ligand.mol2 --ligand_anchor_id num --min_dist 5 --max_dist 15 --num_cpu 20 --top_docking 50
 ```
 * `folder`: working folder name.
 * `target`: target protein file.
@@ -127,7 +127,7 @@ python AutoPROTACs.py --folder folder --target target.pdb --warhead_anchor_id nu
 ## Evaluation of generated PROTACs
 ```bash
 conda activate DeepPROTACs
-python DeepPROTACs.py --folder folder --target target.pdb --E3_ligase E3_ligase.pdb --top_docking 10
+python DeepPROTACs.py --folder folder --target target.pdb --E3_ligase E3_ligase.pdb --top_docking 50
 ```
 * `folder`: working folder name.
 * `target`: target protein file.
