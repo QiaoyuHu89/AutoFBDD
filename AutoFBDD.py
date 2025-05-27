@@ -88,21 +88,21 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
     while os.path.isfile('app_bricks_' + str(iter_idx) + '.list'):
         # prepare data for brick linking
         log.write('INFO: Data prepare for brick linking in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/data_pre_for_linking_pharms.py', './')
-        os.system('python data_pre_for_linking_pharms.py -l app_bricks_' + str(iter_idx) + '.list -f brickfolder_' + str(iter_idx) \
+        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/data_pre_for_linking.py', './')
+        os.system('python data_pre_for_linking.py -l app_bricks_' + str(iter_idx) + '.list -f brickfolder_' + str(iter_idx) \
                     + ' -t ' + pdbfile + ' -i ' + str(iter_idx))
         
         # perform brick linking
         log.write('INFO: brick linking in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/brick_linking_pharms.py', './')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/models/linker_design/pretrained_DEVELOP_model_pharms.pickle', './')
-        os.system('python brick_linking_pharms.py -l app_bricks_' + str(iter_idx) + '.list -d data_path_' + str(iter_idx) \
+        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/brick_linking.py', './')
+        shutil.copy(AutoFBDD_FOL + '/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle', './')
+        os.system('python brick_linking.py -l app_bricks_' + str(iter_idx) + '.list -d data_path_' + str(iter_idx) \
                     + ' -i ' + str(iter_idx))
         
         # evaluate generated molecules
         log.write('INFO: Generated mols evaluation in iteration ' + str(iter_idx) + '.\n')
         os.system('cp ' + AutoFBDD_FOL + '/DEVELOP/analysis/* ./')
-        os.system('python assess_linking_pharms.py -d data_path_' + str(iter_idx) + ' -a ZINC -f generated_smi_' + str(iter_idx) + \
+        os.system('python assess_linking.py -d data_path_' + str(iter_idx) + ' -a ZINC -f generated_smi_' + str(iter_idx) + \
                     ' -t ' + AutoFBDD_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt -s ./ -n ' + str(n) + \
                     ' -v True -r None -p ./wehi_pains.csv -i ' + str(iter_idx))
         
