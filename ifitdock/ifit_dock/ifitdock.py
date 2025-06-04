@@ -70,7 +70,8 @@ def main(pdbfile, centerfile, brickfolder, bricklist, parallel, n, sep_num):
         sep_brickfolder = os.path.splitext(sep_bricklist)[0]
         os.mkdir(sep_brickfolder)
         os.mkdir(sep_brickfolder + '/file')
-        os.system('cp * ' + sep_brickfolder)
+        os.system("rsync -av --exclude='bricks_file_*' ./ " + sep_brickfolder)
+        os.system('cp ' + sep_bricklist + ' ' + sep_brickfolder)
         with open(sep_bricklist, 'r') as fr:
             brick_lines = fr.readlines()
         for brick_line in brick_lines:
