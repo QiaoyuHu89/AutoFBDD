@@ -2,15 +2,15 @@ import os
 import sys
 from tokenize import Name
 
-AutoFBDD_FOL = os.environ['AutoFBDD_FOL']
+DeepDegradome_FOL = os.environ['DeepDegradome_FOL']
 PatchDock = os.environ["PATCHDOCK"]
-FOLDER = AutoFBDD_FOL + "/Rosetta/"
+FOLDER = DeepDegradome_FOL + "/Rosetta/"
 ROSETTA_FOL = os.environ["ROSETTA_FOL"]
 SCRIPTS = ROSETTA_FOL + "/main/source/bin/rosetta_scripts.default.linuxgccrelease"
 
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/")
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/examples")
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/analysis/")
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/")
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/examples")
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/analysis/")
 
 import math
 import glob
@@ -368,7 +368,7 @@ def generate_linker(results_list, warhead, E3_ligand, warhead_anchor_id, ligand_
         print(folder + ' min_dist: ' + str(min_dist))
         if min_dist >= 2.0:
             try:
-                os.system('cp ' + AutoFBDD_FOL +'/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle .')
+                os.system('cp ' + DeepDegradome_FOL +'/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle .')
                 data_path, frag_sdf = cal_dis_ang(new_warhead, new_E3_ligand, new_warhead_anchor_id, new_ligand_anchor_id, folder)
                 linker_pharma_sdf = folder + '_linker_pharma.sdf'
                 pharm_count = obtain_linker_pharma(du_surround_mol, frag_sdf, linker_pharma_sdf)
@@ -502,7 +502,7 @@ def evaluate_PROTACs(results_list, n):
         if os.path.exists(folder + '/generated_smi_1'):
             os.chdir(folder)
             folder_log = open(folder + '_log.txt', 'a')
-            os.system('cp ' + AutoFBDD_FOL + '/DEVELOP/analysis/evaluate_linking_mols*.py .')
+            os.system('cp ' + DeepDegradome_FOL + '/DEVELOP/analysis/evaluate_linking_mols*.py .')
             os.system('cp generated_smi_1/*.smi .')
             gen_smi = folder + '_generated_smiles.smi'
             gen_smi = keep_chirality(gen_smi)
@@ -515,8 +515,8 @@ def evaluate_PROTACs(results_list, n):
                 frag_sdf = folder + '_frag.sdf'
                 delete_du(frag_sdf)
                 try:
-                    assess_mols_RMSD('ZINC', gen_smi, frag_sdf, AutoFBDD_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt', \
-                        './', folder, str(n), 'True', 'None', AutoFBDD_FOL + '/DEVELOP/analysis/wehi_pains.csv', 'True')
+                    assess_mols_RMSD('ZINC', gen_smi, frag_sdf, DeepDegradome_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt', \
+                        './', folder, str(n), 'True', 'None', DeepDegradome_FOL + '/DEVELOP/analysis/wehi_pains.csv', 'True')
                     os.system('mv ' + folder + ' ' + folder + '_RMSD')
                     log_file = folder + '_RMSD_log.txt'
                     extract_sdf(log_file, 'gen_RMSD_sdfs', 'gen_RMSD_smis', folder + '_RMSD')
@@ -533,8 +533,8 @@ def evaluate_PROTACs(results_list, n):
                     continue
                 
                 try:
-                    assess_mols_pharm('ZINC', gen_smi, frag_sdf, AutoFBDD_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt', \
-                        './', folder, str(n), 'True', 'None', AutoFBDD_FOL + '/DEVELOP/analysis/wehi_pains.csv', '.', 'True')
+                    assess_mols_pharm('ZINC', gen_smi, frag_sdf, DeepDegradome_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt', \
+                        './', folder, str(n), 'True', 'None', DeepDegradome_FOL + '/DEVELOP/analysis/wehi_pains.csv', '.', 'True')
                     os.system('mv '  + folder + ' ' + folder + '_pharm')
                     log_file = folder + '_pharm_log.txt'
                     extract_sdf(log_file, 'gen_pharm_sdfs', 'gen_pharm_smis', folder + '_pharm')
@@ -597,7 +597,7 @@ def main(folder, target, warhead_anchor_id, E3_ligase, E3_ligand, ligand_anchor_
     PROTACs_folder = 'PROTACs_' + target.split('.')[0] + '_' + E3_ligase.split('.')[0]
     if not os.path.exists(PROTACs_folder):
         os.mkdir(PROTACs_folder)
-    warheads = glob.glob(AutoFBDD_FOL + '/' + folder + '/final_results/*.mol2')
+    warheads = glob.glob(DeepDegradome_FOL + '/' + folder + '/final_results/*.mol2')
     for warhead in warheads[0:30]:
         try:
             subfolder = os.path.splitext(os.path.basename(warhead))[0] + '_' + os.path.splitext(E3_ligase)[0]
@@ -667,12 +667,12 @@ def main(folder, target, warhead_anchor_id, E3_ligase, E3_ligand, ligand_anchor_
             log.write('INFO: Merge generated PROTACs.\n')
             merge_sdf(results_list)
 
-            os.chdir(AutoFBDD_FOL + '/' + folder)
+            os.chdir(DeepDegradome_FOL + '/' + folder)
         except Exception as e:
             print(str(e))
-            os.chdir(AutoFBDD_FOL + '/' + folder)
+            os.chdir(DeepDegradome_FOL + '/' + folder)
             continue
-    os.chdir(AutoFBDD_FOL)
+    os.chdir(DeepDegradome_FOL)
     log.write('INFO: AutoPROTACs has finished.\n')
     log.close()
 
