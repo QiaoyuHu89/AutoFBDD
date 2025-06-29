@@ -1,9 +1,9 @@
 import os
 import sys
-AutoFBDD_FOL = os.environ['AutoFBDD_FOL']
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/")
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/examples")
-sys.path.append(AutoFBDD_FOL + "/DEVELOP/analysis/")
+DeepDegradome_FOL = os.environ['DeepDegradome_FOL']
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/")
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/examples")
+sys.path.append(DeepDegradome_FOL + "/DEVELOP/analysis/")
 import time
 import glob
 import shutil
@@ -13,8 +13,8 @@ from multiprocessing import Pool
 from linking_postprocess import split_mol2
 
 def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist, n, sep_num, t, k, val, num_pose):
-    log = open(folder + '/AutoFBDD_log.txt', 'w', buffering=1)
-    log.write('INFO: AutoFBDD(linking) has started.\n')
+    log = open(folder + '/DeepDegradome_log.txt', 'w', buffering=1)
+    log.write('INFO: DeepDegradome(linking) has started.\n')
     cwd = os.getcwd()
     if brickmode == 'mol':
         # eMolFrag
@@ -24,8 +24,8 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
             os.mkdir('eMolFrag')
         os.system('cp -r ' + brickfolder + ' eMolFrag/')
         os.chdir('eMolFrag')
-        os.system('python ' + AutoFBDD_FOL + '/eMolFrag/process.py -f ' + brickfolder)
-        os.system('python ' + AutoFBDD_FOL + '/eMolFrag/eMolFrag/eMolFrag_2017_06_19_01/eMolFrag_edit.py -i ' + \
+        os.system('python ' + DeepDegradome_FOL + '/eMolFrag/process.py -f ' + brickfolder)
+        os.system('python ' + DeepDegradome_FOL + '/eMolFrag/eMolFrag/eMolFrag_2017_06_19_01/eMolFrag_edit.py -i ' + \
             brickfolder + '_processed' + ' -o ' + brickfolder + '_out -p ' + str(n) + ' -m 0 -c 0')
         # ifitdock
         log.write('INFO: brick ifitdock has started.\n')
@@ -50,7 +50,7 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
             os.system('cp -r ' + pdbfile + ' ' + centerfile + ' ' + brickfolder + ' ifit_dock/')
         else:
             os.system('cp ' + pdbfile + ' ' + centerfile + ' ifit_dock/')
-            #os.system('cp -r ' + AutoFBDD_FOL + '/brick_library/' + brickfolder + ' ifit_dock/')
+            #os.system('cp -r ' + DeepDegradome_FOL + '/brick_library/' + brickfolder + ' ifit_dock/')
         os.chdir('ifit_dock')
         os.system('python ifitdock.py -i ' + pdbfile + ' -c ' + centerfile + ' -f ' + brickfolder + ' -l ' + \
                 bricklist + ' -n ' + str(n) + ' -s ' + str(sep_num) + ' --parallel')
@@ -88,28 +88,28 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
     while os.path.isfile('app_bricks_' + str(iter_idx) + '.list'):
         # prepare data for brick linking
         log.write('INFO: Data prepare for brick linking in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/data_pre_for_linking.py', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/examples/data_pre_for_linking.py', './')
         os.system('python data_pre_for_linking.py -l app_bricks_' + str(iter_idx) + '.list -f brickfolder_' + str(iter_idx) \
                     + ' -t ' + pdbfile + ' -i ' + str(iter_idx))
         
         # perform brick linking
         log.write('INFO: brick linking in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/brick_linking.py', './')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/examples/brick_linking.py', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/models/linker_design/pretrained_DEVELOP_model.pickle', './')
         os.system('python brick_linking.py -l app_bricks_' + str(iter_idx) + '.list -d data_path_' + str(iter_idx) \
                     + ' -i ' + str(iter_idx))
         
         # evaluate generated molecules
         log.write('INFO: Generated mols evaluation in iteration ' + str(iter_idx) + '.\n')
-        os.system('cp ' + AutoFBDD_FOL + '/DEVELOP/analysis/* ./')
+        os.system('cp ' + DeepDegradome_FOL + '/DEVELOP/analysis/* ./')
         os.system('python assess_linking.py -d data_path_' + str(iter_idx) + ' -a ZINC -f generated_smi_' + str(iter_idx) + \
-                    ' -t ' + AutoFBDD_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt -s ./ -n ' + str(n) + \
+                    ' -t ' + DeepDegradome_FOL + '/DEVELOP/data/linker_design/data_zinc_train.txt -s ./ -n ' + str(n) + \
                     ' -v True -r None -p ./wehi_pains.csv -i ' + str(iter_idx))
         
         # brick linking postprocess
         log.write('INFO: brick linking postprocess in iteration ' + str(iter_idx) + '.\n')
-        os.system('cp -r ' + AutoFBDD_FOL + '/ifitdock/ifit_eval ./')
-        os.system('cp ' + AutoFBDD_FOL + '/' + folder + '/' + pdbfile + ' ' + AutoFBDD_FOL + '/' + folder + '/' + centerfile + ' ./ifit_eval')
+        os.system('cp -r ' + DeepDegradome_FOL + '/ifitdock/ifit_eval ./')
+        os.system('cp ' + DeepDegradome_FOL + '/' + folder + '/' + pdbfile + ' ' + DeepDegradome_FOL + '/' + folder + '/' + centerfile + ' ./ifit_eval')
         os.system('python linking_postprocess.py -i ' + pdbfile + ' -c ' + centerfile + ' -e eval_folder -n ' + str(n) + \
                     ' -p ' + str(num_pose) + ' -t ' + str(iter_idx))
 
@@ -187,14 +187,14 @@ def main_linking(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
     cmd.save(os.path.splitext(pdbfile)[0] + '_results.pse')
     cmd.delete('all')
     shutil.move(os.path.splitext(pdbfile)[0] + '_results.pse', 'final_results/')
-    os.chdir(AutoFBDD_FOL)
-    print('AutoFBDD done!')
-    log.write('INFO: AutoFBDD has finished.\n')
+    os.chdir(DeepDegradome_FOL)
+    print('DeepDegradome done!')
+    log.write('INFO: DeepDegradome has finished.\n')
     log.close()
 
 def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist, n, sep_num, t, k, val, num_pose):
-    log = open(folder + '/AutoFBDD_log.txt', 'w', buffering=1)
-    log.write('INFO: AutoFBDD(growing) has started.\n')
+    log = open(folder + '/DeepDegradome_log.txt', 'w', buffering=1)
+    log.write('INFO: DeepDegradome(growing) has started.\n')
     cwd = os.getcwd()
     if brickmode == 'mol':
         # eMolFrag
@@ -204,8 +204,8 @@ def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
             os.mkdir('eMolFrag')
         os.system('cp -r ' + brickfolder + ' eMolFrag/')
         os.chdir('eMolFrag')
-        os.system('python ' + AutoFBDD_FOL + '/eMolFrag/process.py -f ' + brickfolder)
-        os.system('python ' + AutoFBDD_FOL + '/eMolFrag/eMolFrag/eMolFrag_2017_06_19_01/eMolFrag_edit.py -i ' + \
+        os.system('python ' + DeepDegradome_FOL + '/eMolFrag/process.py -f ' + brickfolder)
+        os.system('python ' + DeepDegradome_FOL + '/eMolFrag/eMolFrag/eMolFrag_2017_06_19_01/eMolFrag_edit.py -i ' + \
             brickfolder + '_processed' + ' -o ' + brickfolder + '_out -p ' + str(n) + ' -m 0 -c 0')
         # ifitdock
         log.write('INFO: brick ifitdock has started.\n')
@@ -230,7 +230,7 @@ def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
             os.system('cp -r ' + pdbfile + ' ' + centerfile + ' ' + brickfolder + ' ifit_dock/')
         else:
             os.system('cp ' + pdbfile + ' ' + centerfile + ' ifit_dock/')
-            #os.system('cp -r ' + AutoFBDD_FOL + '/brick_library/' + brickfolder + ' ifit_dock/')
+            #os.system('cp -r ' + DeepDegradome_FOL + '/brick_library/' + brickfolder + ' ifit_dock/')
         os.chdir('ifit_dock')
         os.system('python ifitdock.py -i ' + pdbfile + ' -c ' + centerfile + ' -f ' + brickfolder + ' -l ' + \
                 bricklist + ' -n ' + str(n) + ' -s ' + str(sep_num) + ' --parallel')
@@ -269,28 +269,28 @@ def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
         os.system('rm app_bricks_' + str(iter_idx) + '.list')
         # prepare data for brick growing
         log.write('INFO: Data prepare for brick growing in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/data_pre_for_growing.py', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/examples/data_pre_for_growing.py', './')
         os.system('python data_pre_for_growing.py -f brickfolder_' + str(iter_idx) + ' -t ' + pdbfile \
                     + ' -i ' + str(iter_idx))
         
         # perform brick growing
         log.write('INFO: brick growing in iteration ' + str(iter_idx) + '.\n')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/examples/brick_growing.py', './')
-        shutil.copy(AutoFBDD_FOL + '/DEVELOP/models/scaffold_elaboration/pretrained_DEVELOP_model.pickle', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/examples/brick_growing.py', './')
+        shutil.copy(DeepDegradome_FOL + '/DEVELOP/models/scaffold_elaboration/pretrained_DEVELOP_model.pickle', './')
         os.system('python brick_growing.py -l app_bricks_' + str(iter_idx) + '.list -d data_path_' + str(iter_idx) \
                     + ' -i ' + str(iter_idx))
         
         # evaluate generated molecules
         log.write('INFO: Generated mols evaluation in iteration ' + str(iter_idx) + '.\n')
-        os.system('cp ' + AutoFBDD_FOL + '/DEVELOP/analysis/* ./')
+        os.system('cp ' + DeepDegradome_FOL + '/DEVELOP/analysis/* ./')
         os.system('python assess_growing_mols.py -d data_path_' + str(iter_idx) + ' -a ZINC -f generated_smi_' + str(iter_idx) + \
-                    ' -t ' + AutoFBDD_FOL + '/DEVELOP/data/scaffold_elaboration/data_zinc_train.txt -s ./ -n ' + str(n) + \
+                    ' -t ' + DeepDegradome_FOL + '/DEVELOP/data/scaffold_elaboration/data_zinc_train.txt -s ./ -n ' + str(n) + \
                     ' -v True -r None -p ./wehi_pains.csv -i ' + str(iter_idx))
         
         # brick growing postprocess
         log.write('INFO: brick growing postprocess in iteration ' + str(iter_idx) + '.\n')
-        os.system('cp -r ' + AutoFBDD_FOL + '/ifitdock/ifit_eval ./')
-        os.system('cp ' + AutoFBDD_FOL + '/' + folder + '/' + pdbfile + ' ' + AutoFBDD_FOL + '/' + folder + '/' + centerfile + ' ./ifit_eval')
+        os.system('cp -r ' + DeepDegradome_FOL + '/ifitdock/ifit_eval ./')
+        os.system('cp ' + DeepDegradome_FOL + '/' + folder + '/' + pdbfile + ' ' + DeepDegradome_FOL + '/' + folder + '/' + centerfile + ' ./ifit_eval')
         os.system('python growing_postprocess.py -i ' + pdbfile + ' -c ' + centerfile + ' -e eval_folder -n ' + str(n) + \
                     ' -p ' + str(num_pose) + ' -t ' + str(iter_idx))
 
@@ -346,14 +346,14 @@ def main_growing(brickmode, folder, pdbfile, centerfile, brickfolder, bricklist,
     cmd.save(os.path.splitext(pdbfile)[0] + '_results.pse')
     cmd.delete('all')
     shutil.move(os.path.splitext(pdbfile)[0] + '_results.pse', 'final_results/')
-    os.chdir(AutoFBDD_FOL)
-    print('AutoFBDD done!')
+    os.chdir(DeepDegradome_FOL)
+    print('DeepDegradome done!')
     log.write('INFO: AutoFBDD has finished.\n')
     log.close()
 
 
 if __name__=="__main__":
-    # Usage: python AutoFBDD.py --mode mode --brick_mode brickmode --folder folder --input_pdb target.pdb --center center.txt \
+    # Usage: python DeepDegradome.py --mode mode --brick_mode brickmode --folder folder --input_pdb target.pdb --center center.txt \
     # --brickfolder brickfolder --brickfile_list bricks_file.txt --num_cpu 20 --sep_bricks 5 --top_clusters 10 --top_bricks 3 --dis_val 10 --poses 3
     # Get the arguments for ifitdock
     parser = argparse.ArgumentParser(description='Pass parameters!')
