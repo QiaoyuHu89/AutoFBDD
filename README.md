@@ -1,9 +1,9 @@
-# AutoFBDD: An AI-Driven Fragment-Based Approach for Automated Small Molecule and PROTAC Generation with Applications in Drug Design
-Official implementation of ***AutoFBDD***, a fragment-based model for de novo small molecule and PROTAC generation, by Qiaoyu Hu<sup>1,#</sup>, Yu Cao<sup>1</sup>, PengXuan Ren<sup>1</sup>, Xianglei Zhang<sup>1</sup>, Fenglei Li<sup>1</sup>, Xueyuan Zhang, Yongqi Zhou, Lianghe Mei<sup>#</sup>, and Fang Bai<sup>#</sup>.
+# DeepDegradome: A Structure-Aware Deep Learning Framework for De Novo PROTAC and Ligand Generation Against Druggable and Undruggable Targets
+Official implementation of ***DeepDegradome***, a fragment-based model for de novo small molecules and PROTACs generation, by Qiaoyu Hu<sup>1,#</sup>, Yu Cao<sup>1</sup>, PengXuan Ren<sup>1</sup>, Xianglei Zhang<sup>1</sup>, Fenglei Li<sup>1</sup>, Xueyuan Zhang, Fengyu Cai, Ran Zhang, Yongqi Zhou, Lianghe Mei<sup>#</sup>, and Fang Bai<sup>#</sup>.
 
 <p align="center">
-  <img src="figures/AutoFBDD_framework.png" alt="AutoFBDD Framework" /><br>
-  <strong>Fig 1.</strong> AutoFBDD framework
+  <img src="figures/DeepDegradome_framework.png" alt="DeepDegradome Framework" /><br>
+  <strong>Fig 1.</strong> DeepDegradome framework
 </p>
 
 <table align="center">
@@ -32,10 +32,10 @@ Official implementation of ***AutoFBDD***, a fragment-based model for de novo sm
 
 ### Install conda environment via yaml file
 ```bash
-# Create the AutoFBDD environment
-conda env create -f AutoFBDD.yaml
-# Activate the AutoFBDD environment
-conda activate AutoFBDD
+# Create the DeepDegradome environment
+conda env create -f DeepDegradome.yaml
+# Activate the DeepDegradome environment
+conda activate DeepDegradome
 
 # Create the DeepPROTACs environment
 conda env create -f DeepPROTACs.yaml
@@ -67,7 +67,7 @@ If the sources is successfully compiled, an execution file "pkcombu" will appear
 
 ### Set environment variables
 ```bash
-echo 'export AutoFBDD_FOL=your_path_to_AutoFBDD_folder' >> ~/.bashrc
+echo 'export DeepDegradome_FOL=your_path_to_AutoFBDD_folder' >> ~/.bashrc
 echo 'export PATCHDOCK=your_path_to_patchdock_folder' >> ~/.bashrc
 echo 'export ROSETTA_FOL=your_path_to_rosetta_folder' >> ~/.bashrc
 echo 'export PATH=your_path_to_pkcombu_file:$PATH' >> ~/.bashrc
@@ -75,7 +75,7 @@ source ~/.bashrc
 ```
 For example:
 ```bash
-echo 'export AutoFBDD_FOL=/home/bailab/other/hqy/AutoFBDD' >> ~/.bashrc
+echo 'export DeepDegradome_FOL=/home/bailab/other/hqy/AutoFBDD' >> ~/.bashrc
 echo 'export PATCHDOCK=/home/bailab/other/hqy/PatchDock' >> ~/.bashrc
 echo 'export ROSETTA_FOL=/home/bailab/software/rosetta_src_2020.08.61146_bundle' >> ~/.bashrc
 echo 'export PATH=/home/bailab/other/hqy/AutoFBDD/eMolFrag:$PATH' >> ~/.bashrc
@@ -91,8 +91,8 @@ You can download the brick library `brick_library.tar.gz` from [here](https://dr
 
 ## Generation of small molecules
 ```bash
-conda activate AutoFBDD
-python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 6 --poses 3
+conda activate DeepDegradome
+python DeepDegradome_ligands.py --mode linking --brick_mode brick --folder folder_name --input_pdb receptor.pdb --center center.txt --brickfolder all --brickfile_list bricks_file.txt --num_cpu 40 --sep_bricks 100 --top_clusters 10 --top_bricks 5 --dis_val 6 --poses 3
 ```
 * `mode`: FBDD mode (linking or growing).
 * `brick_mode`: brick mode (brick or mol). If you want to use brick_library or provide your own brickfolder, please specify brick in brick_mode. If you have a list of small molecules and want to cut them into bricks, please specify mol in brick_mode.
@@ -110,8 +110,8 @@ python AutoFBDD.py --mode linking --brick_mode brick --folder folder_name --inpu
 
 ## Generation of PROTACs
 ```bash
-conda activate AutoFBDD
-python AutoPROTACs.py --folder folder --target target.pdb --warhead_anchor_id num --E3_ligase E3_ligase.pdb --E3_ligand E3_ligand.mol2 --ligand_anchor_id num --min_dist 5 --max_dist 15 --num_cpu 20 --top_docking 50
+conda activate DeepDegradome
+python DeepDegradome_PROTACs.py --folder folder --target target.pdb --warhead_anchor_id num --E3_ligase E3_ligase.pdb --E3_ligand E3_ligand.mol2 --ligand_anchor_id num --min_dist 5 --max_dist 15 --num_cpu 20 --top_docking 50
 ```
 * `folder`: working folder name.
 * `target`: target protein file.
