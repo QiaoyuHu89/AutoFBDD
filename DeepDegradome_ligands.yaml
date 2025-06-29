@@ -1,4 +1,4 @@
-name: AutoFBDD
+name: DeepDegradome_ligands
 channels:
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
@@ -161,5 +161,5 @@ dependencies:
     - werkzeug==2.0.3
     - zipp==3.6.0
 variables:
-  AutoFBDD_FOL: /public/home/baifang/hqy/AutoFBDD
-prefix: /public/home/baifang/shuaiyan/anaconda3/envs/aFBDD
+  DeepDegradome_ligands_FOL: /public/home/baifang/hqy/DeepDegradome_ligands
+prefix: /public/home/baifang/shuaiyan/anaconda3/envs/DeepDegradome_ligands
