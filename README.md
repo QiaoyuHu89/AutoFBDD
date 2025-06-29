@@ -1,5 +1,5 @@
-# DeepDegradome: A Structure-Aware Deep Learning Framework for De Novo PROTAC and Ligand Generation Against Druggable and Undruggable Targets
-Official implementation of ***DeepDegradome***, a fragment-based model for de novo small molecules and PROTACs generation, by Qiaoyu Hu<sup>1,#</sup>, Yu Cao<sup>1</sup>, PengXuan Ren<sup>1</sup>, Xianglei Zhang<sup>1</sup>, Fenglei Li<sup>1</sup>, Xueyuan Zhang, Fengyu Cai, Ran Zhang, Yongqi Zhou, Lianghe Mei<sup>#</sup>, and Fang Bai<sup>#</sup>.
+# DeepDegradome: A Structure-Aware Deep Learning Framework for *De Novo* PROTAC and Ligand Generation Against Druggable and Undruggable Targets
+Official implementation of ***DeepDegradome***, a fragment-based model for *de novo* small molecules and PROTACs generation, by Qiaoyu Hu<sup>1,#</sup>, Yu Cao<sup>1</sup>, PengXuan Ren<sup>1</sup>, Xianglei Zhang<sup>1</sup>, Fenglei Li<sup>1</sup>, Xueyuan Zhang, Fengyu Cai, Ran Zhang, Yongqi Zhou, Lianghe Mei<sup>#</sup>, and Fang Bai<sup>#</sup>.
 
 <p align="center">
   <img src="figures/DeepDegradome_framework.PNG" alt="DeepDegradome Framework" /><br>
